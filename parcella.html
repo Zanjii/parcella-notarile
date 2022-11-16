@@ -15,12 +15,12 @@
                 <td>Spese documentate</td>
                 <th><input type="number" id="spese_doc" name="spese_doc" value="0" min="0"><label>€</label><br></th>    
             </tr>  
-			<tr><th>
-				<select id="sel" onchange="costi()">
-					<option id="cost" value="Costi di impianto">Costituzione</option>
-					<option id="amp" value="Costi di ampliamento">Aumento CS</option>
-			  </select>
-			</th></tr>
+	    <tr><th>
+	    <select id="sel" onchange="costi()">
+		<option id="cost" value="Costi di impianto">Costituzione</option>
+		<option id="amp" value="Costi di ampliamento">Aumento CS</option>
+	    </select>
+	</th></tr>
         </table>
         <br>
         <table id="risultati">
@@ -75,70 +75,65 @@
                 onorario = parseFloat(document.getElementById("onorario").value);
                 spese_doc = parseFloat(document.getElementById("spese_doc").value);
 
-				//CALCOLI
-				IVA = (onorario*22)/100;
-				//.toFixed(x) arrotonda a x numero di decimali 
-				iva_arr = IVA.toFixed(2);
-				ritenuta = (onorario*20)/100;
-				rit_arr = ritenuta.toFixed(2);
-				deb_notaio = (onorario + spese_doc + IVA).toFixed(2);
-				costi_imp = (onorario + spese_doc).toFixed(2);
-				banca = (deb_notaio - rit_arr).toFixed(2);
+		//CALCOLI
+		IVA = (onorario*22)/100;
+		//.toFixed(x) arrotonda a x numero di decimali 
+		iva_arr = IVA.toFixed(2);
+		ritenuta = (onorario*20)/100;
+		rit_arr = ritenuta.toFixed(2);
+		deb_notaio = (onorario + spese_doc + IVA).toFixed(2);
+		costi_imp = (onorario + spese_doc).toFixed(2);
+		banca = (deb_notaio - rit_arr).toFixed(2);
 
-                //RISULTATI
-                inv = "<br>";
-                sp = " ";
-                eu = "€";
-                riga1 = eu + costi_imp + inv;
-                riga2 = eu + iva_arr + inv;
-                riga3 = riga4 = eu + deb_notaio + inv;
-                riga5 = riga7 = riga8= eu + rit_arr + inv;
-                riga6 = eu + banca + inv;
-               
-				//definisco due array
-				var arr = new Array();
-				var valore = new Array();
-				//j parte da 1 e darà il numero alla riga 
-				var j=1;
-				for(var i=0; i<8; i++){
-					//arr[i] = ["riga1", "riga2"...]
-					arr[i] = "riga"+j.toString();
-					//eval() returns value of a parameter
-					//valore[i] prende il valore della variabile globale riga1, riga 2...
-					valore[i] = eval(arr[i]);
-					//risultato:
-					//document.getElementById("riga1").innerHTML = riga1;
-					document.getElementById(arr[i]).innerHTML = valore[i];
-					j++;
-				}
-					
-			}
+		//RISULTATI
+		inv = "<br>";
+		sp = " ";
+		eu = "€";
+		riga1 = eu + costi_imp + inv;
+		riga2 = eu + iva_arr + inv;
+		riga3 = riga4 = eu + deb_notaio + inv;
+		riga5 = riga7 = riga8= eu + rit_arr + inv;
+		riga6 = eu + banca + inv;
+
+		//definisco due array
+		var arr = new Array();
+		var valore = new Array();
+		//j parte da 1 e darà il numero alla riga 
+		var j=1;
+		for(var i=0; i<8; i++){
+			//arr[i] = ["riga1", "riga2"...]
+			arr[i] = "riga"+j.toString();
+			//eval() returns value of a parameter
+			//valore[i] prende il valore della variabile globale riga1, riga 2...
+			valore[i] = eval(arr[i]);
+			//risultato:
+			//document.getElementById("riga1").innerHTML = riga1;
+			document.getElementById(arr[i]).innerHTML = valore[i];
+			j++;
+		}
+
+	}
 			
-			function costi(){
-				
-				var x = document.getElementById("sel").value;
-				if(x != "Costi di impianto"){	
-					document.getElementById("costi").innerHTML = x;				
-				}else{
-					document.getElementById("costi").innerHTML = x;
-				}
-				
-			}
+	function costi(){
+
+		var x = document.getElementById("sel").value;
+		document.getElementById("costi").innerHTML = x;				
+	}
         </script>
         <style>
             table, th, td {
                 border: 1px solid black;
                 border-collapse: collapse;
                 padding: 5px; 
-				width: 25%	
+		width: 25%	
             }
     
             input {          
                 border: 1px solid black;
                 border-radius: 5px;
-				padding: 2px;
+		padding: 2px;
                 float: left;
-				width: 60%
+		width: 60%
             }
             
             button, select{
@@ -146,17 +141,17 @@
             }
 
             .res, label{
-				float: left;
-				padding: 2px;
+		float: left;
+		padding: 2px;
             }
 			
-			.conto{
-				font-weight: bold;
-			}
+	    .conto{
+		font-weight: bold;
+	    }
 
-			.desc{
-				font-weight: normal;
-			}	
+	    .desc{
+		font-weight: normal;
+	     }	
 			
         </style>
 	<footer>
